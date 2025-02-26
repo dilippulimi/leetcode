@@ -9,6 +9,8 @@ public class NumberSubarraysOddSum1524 {
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5,6,7};
         System.out.println(numOfSubarrays(arr));
+        int[] nums ={1,-3,2,3,-4};
+        System.out.println(maxAbsoluteSum(nums));
     }
 
     public static int numOfSubarrays(int[] arr) {
@@ -29,5 +31,19 @@ public class NumberSubarraysOddSum1524 {
         }
 
         return result;
+    }
+
+    public static int maxAbsoluteSum(int[] nums) {
+        int sum = 0;
+        int maxPrefix = 0;
+        int minPrefix = 0;
+
+        for (final int num : nums) {
+            sum += num;
+            maxPrefix = Math.max(maxPrefix, sum);
+            minPrefix = Math.min(minPrefix, sum);
+        }
+
+        return maxPrefix - minPrefix;
     }
 }
